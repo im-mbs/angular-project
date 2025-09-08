@@ -1,43 +1,49 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ValueChangeEvent } from '@angular/forms';
-import { Observable , throwError} from 'rxjs';
-import { catchError} from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
+
 export class RequestHTTPService {
   constructor(private http: HttpClient) {}
 
-  private handleError(error : HttpErrorResponse):Observable<never>{
+  private handleError(error: HttpErrorResponse): Observable<never> {
     let errorMessage = 'An unknown error occurred!';
-    if(error.error instanceof ErrorEvent){
+    if (error.error instanceof ErrorEvent) {
       //client-side or network error
-      errorMessage = `Error : ${error.error.message}`
-    }else{
+      errorMessage = `Error : ${error.error.message}`;
+    } else {
       //backend returned an unsuccessful respond
-      errorMessage = `server returned code: ${error.status} , error message: ${error.message}`
+      errorMessage = `server returned code: ${error.status} , error message: ${error.message}`;
     }
-    console.error(errorMessage)
-    return throwError (() => new Error (errorMessage));
+    console.error(errorMessage);
+    return throwError(() => new Error(errorMessage));
   }
 
-  url = 'https://dummyjson.com/products';
+  private baseUrl = 'http://192.168.180.7:9000';
+  private tokenKey = '';
 
-  getUser(): Observable<any> {
-    return this.http.get(this.url);
+  getRequest(): Observable<any> {
+    return this.http.get<any>(this.baseUrl).pipe(catchError(this.handleError));
   }
 
-  createUser(userData: any): Observable<any> {
-    return this.http.post(this.url, userData);
+  postRequest(path: string, onSubmitted: any): Observable<any> {
+    const url = `${this.baseUrl}/${path}`;
+    return this.http.post<any>(url, onSubmitted).pipe(catchError(this.handleError));
   }
 
-  updateUser(userId: number, userData: any): Observable<any> {
-    return this.http.put(`${this.url}/${userId}`, userData);
+  deleteRequest(userId: number): Observable<any> {
+    return this.http
+      .delete<any>(`${this.baseUrl}/${userId}`)
+      .pipe(catchError(this.handleError));
   }
 
-  deleteUser(userId: number): Observable<any>{
-    return this.http.delete(`${this.url}/${userId}`);
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey);
   }
+
 }
