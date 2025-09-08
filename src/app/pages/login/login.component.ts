@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FooterComponent } from '../../layouts/footer/footer.component';
 import { Router } from '@angular/router';
 import { RequestHTTPService } from '../../services/request-http.service';
@@ -15,6 +15,7 @@ import { NgIf } from '@angular/common';
 export class LoginComponent {
   loginForm!: FormGroup;
   error: string | null = null;
+  router = inject(Router);
 
   constructor(
     private fb: FormBuilder,
@@ -38,7 +39,7 @@ export class LoginComponent {
           console.log('Login successful:', res.result.token);
           const token = res.result.token;
           localStorage.setItem('auth_token' , token)
-          // this.router.navigate(['/dashboard']); // بعد از لاگین به داشبورد برو
+          this.router.navigate(['/home']); // بعد از لاگین به داشبورد برو
         },
         error: (err) => {
           this.error = 'Login failed. Please check your credentials.';

@@ -1,34 +1,50 @@
-<div class="login-page border rounded">
-  <h1 class="my-5 text-center">Login Page</h1>
-  <div class="container">
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmitted()">
-      <div class="mb-3 form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput username"
-          placeholder="Username"
-          formControlName="username"
-        />
-        <label for="floatingInput">Username</label>
-        <div *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched"> نام کاربر الزامی است</div>
-      </div>
-      <div class="mb-3 form-floating">
-        <input
-          type="password"
-          class="form-control"
-          id="floatingPassword password"
-          placeholder="Password"
-          formControlName="password"
-        />
-        <label for="floatingPassword">Password</label>
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"> رمز عبور الزامی است</div>
-      </div>
-      <div class="d-grid gap-2 col-6 mx-auto my-3">
-        <button class="btn btn-primary" type="submit">Submit</button>
-      </div>
-    </form>
+<div class="d-flex flex-column min-vh-100">
+  <div class="login-page border rounded">
+    <h1 class="my-5 text-center">Login Page</h1>
+    <div class="container">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmitted()">
+        <div class="mb-3 form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput username"
+            placeholder="Username"
+            formControlName="username"
+          />
+          <label for="floatingInput">Username</label>
+          <div
+            *ngIf="
+              loginForm.get('username')?.invalid &&
+              loginForm.get('username')?.touched
+            "
+          >
+            نام کاربر الزامی است
+          </div>
+        </div>
+        <div class="mb-3 form-floating">
+          <input
+            type="password"
+            class="form-control"
+            id="floatingPassword password"
+            placeholder="Password"
+            formControlName="password"
+          />
+          <label for="floatingPassword">Password</label>
+          <div
+            *ngIf="
+              loginForm.get('password')?.invalid &&
+              loginForm.get('password')?.touched
+            "
+          >
+            رمز عبور الزامی است
+          </div>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto my-3">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>

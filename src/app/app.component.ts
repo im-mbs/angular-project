@@ -6,27 +6,10 @@ import { LoginComponent } from './pages/login/login.component';
 
 @Component({
   selector: 'app-root',
-  imports: [LayoutsComponent, LoginComponent],
+  imports: [LayoutsComponent, LoginComponent, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-
-  users:any[] = [];
-  error:string | null = null
-  constructor(private requestHTTPService: RequestHTTPService) {}
-
-  ngOnInit():void {
-  //   this.requestHTTPService.getUser().subscribe({
-  //     next:(data) => {
-  //       this.users = data;
-  //       this.error = null;
-  //     },
-  //     error:(err) =>{
-  //       this.error = err.message;
-  //       console.log('Error in component :' , this.error);
-  //     }
-  //   });
-  // }
-  }
+ 
 }
