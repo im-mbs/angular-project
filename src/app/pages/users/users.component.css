@@ -1,0 +1,20 @@
+th{
+    padding: 0 80px 5px 10px;
+}
+
+td {
+  vertical-align: middle; /* متن در وسط عمودی قرار می‌گیرد */
+}
+
+.user-form{
+  width: 700px;
+  padding: 15px 10px 0;
+}
+
+.user-form input{
+  margin-bottom: 15px;
+}
+
+.user-form label{
+  padding-left: 20px !important;
+}

@@ -1,8 +1,167 @@
-<h1>User List</h1>
-<button (click)="getUsers()">Get User</button>
-<div >
-    <ul>
-        <li *ngFor="let user of users">{{user.username}}</li>
-    </ul>
+<div class="d-flex">
+  <div class="d-flex flex-column me-5">
+    <h1 class="mx-3 mt-4 mb-5">User List</h1>
+    <table class="table mx-3">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Username</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Birth Date</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody class="table-group-divider">
+        @for(user of users; track user.id){
+        <tr>
+          <td class="my-auto">{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.phone_number }}</td>
+          <td>{{ user.birth_date }}</td>
+          <td>
+            <button class="btn btn-success me-3" (click)="onEdit(user)">Update</button>
+            <button class="btn btn-danger" (click)="openDeleteModal(user, deleteModal)">Delete</button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <div class="d-flex flex-column">
+    <h1 class="mx-3 mt-4 mb-5">Creat or Update List</h1>
+    <form class="user-form border rounded bg-light" [formGroup]="creatForm">
+      <div class="row">
+        <div class="form-floating col-lg">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingFname"
+            placeholder="Enter Your First Name"
+            formControlName="f_name"
+          />
+          <label for="floatingFname">First Name</label>
+        </div>
+        <div class="form-floating col-lg">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingLname"
+            placeholder="Enter Your Last Name"
+            formControlName="l_name"
+          />
+          <label for="floatingLname">Last Name</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-floating col-lg">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingUname"
+            placeholder="Enter Your Username"
+            formControlName="username"
+          />
+          <label for="floatingUname">Username</label>
+        </div>
+        <div class="form-floating col-lg">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingEmail"
+            placeholder="Enter Your Email"
+            formControlName="email"
+          />
+          <label for="floatingEmail">Email</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-floating col-lg">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingPhone"
+            placeholder="Enter Your Phone Number"
+            formControlName="phone_number"
+          />
+          <label for="floatingPhone">Phone Number</label>
+        </div>
+        <div class="form-floating col-lg">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingNaCode"
+            placeholder="Enter Your National Code"
+            formControlName="national_code"
+          />
+          <label for="floatingNaCode">National Code</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-floating col-lg">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInCode"
+            placeholder="Enter Your Internal Number"
+            formControlName="internal_number"
+          />
+          <label for="floatingInCode">Internal Number</label>
+        </div>
+        <select
+          class="form-select col-lg form-select-sm me-3"
+          style="height: 56px"
+          aria-label="small select example"
+          formControlName="gender"
+        >
+          <option value="" disabled>Select Your Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <select
+          class="form-select col-lg form-select-sm me-3"
+          style="height: 56px"
+          aria-label="small select example"
+          formControlName="role_name"
+        >
+          <option disabled value="">Select Your Role</option>
+          <option value="supervisor">Supervisor</option>
+          <option value="manager">Manager</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="form-floating col-lg">
+          <input type="date" class="form-control" id="floatingDate1" formControlName="birth_date"/>
+          <label for="floatingDate1">Birth Date</label>
+        </div>
+        <div class="form-floating col-lg">
+          <input type="date" class="form-control" id="floatingDate2" formControlName="date_employed"/>
+          <label for="floatingDate2">Date Employed</label>
+        </div>
+      </div>
+
+      <div class="row mx-1 my-4">
+        <button class="btn btn-danger me-3 col-lg" (click)="onReset()">Reset Form</button>
+        <button class="btn btn-success col-lg" (click)="onCreate()">Submit</button>
+      </div>
+    </form>
+  </div>
 </div>
 
+<ng-template #deleteModal let-modal>
+  <div class="modal-header">
+    <h5 class="modal-title text-danger">تأیید حذف</h5>
+    <button type="button" class="btn-close" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+    <p>آیا مطمئن هستید که می‌خواهید <strong>{{ selectedUser?.username }}</strong> را حذف کنید؟</p>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" (click)="modal.dismiss()">خیر</button>
+    <button class="btn btn-danger" (click)="confirmDelete(modal)">بله، حذف شود</button>
+  </div>
+</ng-template>

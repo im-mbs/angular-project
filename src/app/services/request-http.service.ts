@@ -13,7 +13,6 @@ export class RequestHTTPService {
 
   private getAuthHeaders(): HttpHeaders{
     const token = this.getToken();
-    console.log('Token in header:', token);
     if(token){
       return new HttpHeaders({
         'Content-Type': 'application/json' , 'Authorization': `Bearer ${token}`
@@ -50,9 +49,10 @@ export class RequestHTTPService {
     return this.http.post<any>(url, onSubmitted ,{headers: this.getAuthHeaders()}).pipe(catchError(this.handleError));
   }
 
-  deleteRequest(userId: number): Observable<any> {
+  deleteRequest(path:string , userId: number): Observable<any> {
+    const url = `${this.baseUrl}/${path}/${userId}`;
     return this.http
-      .delete<any>(`${this.baseUrl}/${userId}` ,{headers: this.getAuthHeaders()})
+      .delete<any>(url ,{headers: this.getAuthHeaders()})
       .pipe(catchError(this.handleError));
   }
 

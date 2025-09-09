@@ -18,9 +18,11 @@
     <li class="nav-item">
       <a
         href="#"
-        class="nav-link active"
+        class="nav-link link-dark"
         aria-current="page"
         routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -38,7 +40,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark" routerLink="/dashboard">
+      <a href="#" class="nav-link link-dark" routerLink="/dashboard" routerLinkActive="active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -59,7 +61,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark" routerLink="/orders">
+      <a href="#" class="nav-link link-dark" routerLink="/orders" routerLinkActive="active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -76,7 +78,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark" routerLink="/users">
+      <a href="#" class="nav-link link-dark" routerLink="/users" routerLinkActive="active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -93,7 +95,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark" routerLink="/products">
+      <a href="#" class="nav-link link-dark" routerLink="/products" routerLinkActive="active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
@@ -110,7 +112,7 @@
       </a>
     </li>
     <li>
-      <a href="#" class="nav-link link-dark" routerLink="/customers">
+      <a href="#" class="nav-link link-dark" routerLink="/customers" routerLinkActive="active">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="16"
