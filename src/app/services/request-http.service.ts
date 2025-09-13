@@ -1,4 +1,8 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpHeaders,
+} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ValueChangeEvent } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
@@ -7,20 +11,20 @@ import { catchError, tap } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-
 export class RequestHTTPService {
   constructor(private http: HttpClient) {}
 
-  private getAuthHeaders(): HttpHeaders{
+  private getAuthHeaders(): HttpHeaders {
     const token = this.getToken();
-    if(token){
+    if (token) {
       return new HttpHeaders({
-        'Content-Type': 'application/json' , 'Authorization': `Bearer ${token}`
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       });
     }
     return new HttpHeaders({
-      'Content-Type': 'application/json'
-    })
+      'Content-Type': 'application/json',
+    });
   }
 
   private handleError(error: HttpErrorResponse): Observable<never> {
@@ -39,25 +43,28 @@ export class RequestHTTPService {
   private baseUrl = 'http://192.168.180.7:9000';
   private tokenKey = 'auth_token';
 
-  getRequest(path:string): Observable<any> {
+  getRequest(path: string): Observable<any> {
     const url = `${this.baseUrl}/${path}`;
-    return this.http.get<any>(url ,{headers: this.getAuthHeaders()}).pipe(catchError(this.handleError));
+    return this.http
+      .get<any>(url, { headers: this.getAuthHeaders() })
+      .pipe(catchError(this.handleError));
   }
 
   postRequest(path: string, onSubmitted: any): Observable<any> {
     const url = `${this.baseUrl}/${path}`;
-    return this.http.post<any>(url, onSubmitted ,{headers: this.getAuthHeaders()}).pipe(catchError(this.handleError));
+    return this.http
+      .post<any>(url, onSubmitted, { headers: this.getAuthHeaders() })
+      .pipe(catchError(this.handleError));
   }
 
-  deleteRequest(path:string , userId: number): Observable<any> {
+  deleteRequest(path: string, userId: number): Observable<any> {
     const url = `${this.baseUrl}/${path}/${userId}`;
     return this.http
-      .delete<any>(url ,{headers: this.getAuthHeaders()})
+      .delete<any>(url, { headers: this.getAuthHeaders() })
       .pipe(catchError(this.handleError));
   }
 
   getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }
-
 }

@@ -1,0 +1,17 @@
+.chart-container {
+ width: 1200px;
+}
+
+.dispaly-chart{
+  width: 500px;
+}
+
+input{
+  width: 250px;
+}
+
+.select-rtl {
+  background-position: left 0.75rem center; /* جابجا کردن فلش */
+  padding-left: 2rem; /* فاصله برای فلش */
+  padding-right: 0.75rem; /* اصلاح فاصله راست */
+}

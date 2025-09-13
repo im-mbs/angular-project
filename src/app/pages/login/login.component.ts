@@ -2,7 +2,12 @@ import { Component, inject } from '@angular/core';
 import { FooterComponent } from '../../layouts/footer/footer.component';
 import { Router } from '@angular/router';
 import { RequestHTTPService } from '../../services/request-http.service';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { NgIf } from '@angular/common';
 
 @Component({
@@ -30,24 +35,29 @@ export class LoginComponent {
     });
   }
 
-  onSubmitted() {
-    this.loading = true
-    const loginData = this.loginForm.value
-    this.requestHTTPService
-      .postRequest('users/login', loginData
-      )
-      .subscribe({
-        next: (res) => {
-          console.log('Login successful:', res.result.token);
-          this.loading = false;
-          const token = res.result.token;
-          localStorage.setItem('auth_token' , token)
-          this.router.navigate(['/home']); // بعد از لاگین به داشبورد برو
-        },
-        error: (err) => {
-          this.error = 'Login failed. Please check your credentials.';
-          console.error(err);
-        },
-      });
-  }
+onSubmitted() {
+  this.loading = true;
+  const loginData = this.loginForm.value;
+
+  this.requestHTTPService.postRequest('users/login', loginData).subscribe({
+    next: (res) => {
+      this.loading = false;
+      const token = res?.result?.token;
+
+      if (token) {
+        console.log('✅ Login successful, token:', token);
+        localStorage.setItem('auth_token', token);
+        this.router.navigate(['/home']);
+      } else {
+        this.error = '❌ ورود نامعتبر. توکن دریافت نشد.';
+        console.error('No token received in response:', res);
+      }
+    },
+    error: (err) => {
+      this.loading = false;
+      this.error = 'Login failed. Please check your credentials.';
+      console.error(err);
+    },
+  });
+}
 }
