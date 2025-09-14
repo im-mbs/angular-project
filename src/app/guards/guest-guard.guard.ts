@@ -1,14 +1,15 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const guestGuard: CanActivateFn = (route, state) => {
   const router = inject(Router);
   const authToken = localStorage.getItem('auth_token');
 
   if (authToken) {
-    return true; // اجازه ورود به مسیرهای محافظت‌شده
+    router.navigate(['/home']);
+    return false;
   }
 
-  router.navigate(['/login']);
-  return false;
+  return true; // اجازه ورود به login
 };
+

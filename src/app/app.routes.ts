@@ -8,10 +8,12 @@ import { LayoutsComponent } from './layouts/layouts.component';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ChartsComponent } from './pages/charts/charts.component';
+import { guestGuard } from './guards/guest-guard.guard';
 
 export const routes: Routes = [
   {
     path: 'login',
+    canActivate: [guestGuard],
     loadComponent: () =>
       import('./pages/login/login.component').then((m) => m.LoginComponent),
   },
@@ -23,7 +25,7 @@ export const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'charts', component: ChartsComponent },
       { path: 'users', component: UsersComponent },
-      { path: 'products', component: ProductsComponent},
+      { path: 'products', component: ProductsComponent },
       { path: 'customers', component: CustomersComponent },
       { path: 'home', component: HomeComponent },
     ],
