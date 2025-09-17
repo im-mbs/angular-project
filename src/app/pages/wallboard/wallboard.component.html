@@ -1,26 +1,19 @@
-<div class="report mx-4">
-  <div class="form-box bg-light border rounded">
+<div class="report">
+  <div class="bg-light border rounded">
     <div
       class="p-3 text-left d-flex justify-content-between align-items-center w-100"
     >
-      <app-date-time></app-date-time>
       <h4 class="mb-0 text-blue" text-blue>گزارشات لحظه ای</h4>
+      <app-date-time></app-date-time>
     </div>
     <div class="row m-4">
-      <form class="row justify-content-end align-items-center" [formGroup]="wallboardform">
+      <form
+        class="row justify-content-start align-items-center"
+        [formGroup]="wallboardform"
+      >
         <div class="col-3 d-flex flex-column">
           <label for="queue-select" class="form-label">صف</label>
           <div class="input-group">
-            <select
-              class="form-select form-select-sm select-rtl"
-              aria-label="small select example"
-              formControlName="queue_name"
-              id="queue-select"
-              dir="rtl"
-            >
-              <option value="all">همه</option>
-              <option value="queue-1">پشتیبانی فنی</option>
-            </select>
             <span class="input-group-text">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,21 +29,21 @@
                 />
               </svg>
             </span>
+            <select
+              class="form-select form-select-sm select-rtl"
+              aria-label="small select example"
+              formControlName="queue_name"
+              id="queue-select"
+            >
+              <option value="all">همه</option>
+              <option value="queue-1">پشتیبانی فنی</option>
+            </select>
           </div>
         </div>
 
         <div class="col-3 d-flex flex-column">
           <label for="agent-select" class="form-label">کاربر</label>
           <div class="input-group">
-            <select
-              class="form-select form-select-sm select-rtl"
-              aria-label="small select example"
-              formControlName="agent"
-              id="agent-select"
-              dir="rtl"
-            >
-              <option value="all">همه</option>
-            </select>
             <span class="input-group-text">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -66,6 +59,14 @@
                 />
               </svg>
             </span>
+            <select
+              class="form-select form-select-sm select-rtl"
+              aria-label="small select example"
+              formControlName="agent"
+              id="agent-select"
+            >
+              <option value="all">همه</option>
+            </select>
           </div>
         </div>
       </form>

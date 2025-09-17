@@ -1,9 +1,6 @@
-.chart-container {
- width: 1200px;
-}
-
-input{
-  width: 250px;
+.body{
+      width: calc(100% - 40px);
+    margin: 20px auto;
 }
 
 .select-rtl {

@@ -1,6 +1,6 @@
-.report{
-    width: calc(100% - 40px);
-    margin: 20px auto;
+.body {
+  width: calc(100% - 40px);
+  margin: 20px auto;
 }
 
 .select-rtl {

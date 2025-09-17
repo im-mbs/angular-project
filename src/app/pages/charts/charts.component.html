@@ -1,112 +1,115 @@
-<div
-  class="top-bar p-3 text-left d-flex justify-content-between align-items-center w-100"
->
-  <app-date-time></app-date-time>
-  <h4 class="mb-0 text-blue" text-blue>گزارشات آماری</h4>
-</div>
-<hr />
-<div class="d-flex justify-content-between align-items-center">
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button
-      type="button"
-      class="btn"
-      [ngClass]="{
-        'btn-primary': activePeriod === 'daily',
-        'btn-secondary': activePeriod !== 'daily'
-      }"
-      (click)="setPeriod('daily')"
+<div class="body">
+  <div class="bg-light border rounded">
+    <div
+      class="p-3 text-left d-flex justify-content-between align-items-center w-100"
     >
-      روزانه
-    </button>
-    <button
-      type="button"
-      class="btn"
-      [ngClass]="{
-        'btn-primary': activePeriod === 'weekly',
-        'btn-secondary': activePeriod !== 'weekly'
-      }"
-      (click)="setPeriod('weekly')"
-    >
-      هفتگی
-    </button>
-    <button
-      type="button"
-      class="btn"
-      [ngClass]="{
-        'btn-primary': activePeriod === 'monthly',
-        'btn-secondary': activePeriod !== 'monthly'
-      }"
-      (click)="setPeriod('monthly')"
-    >
-      ماهانه
-    </button>
-    <button
-      type="button"
-      class="btn"
-      [ngClass]="{
-        'btn-primary': activePeriod === 'quarterly',
-        'btn-secondary': activePeriod !== 'quarterly'
-      }"
-      (click)="setPeriod('quarterly')"
-    >
-      فصلی
-    </button>
-  </div>
-
-  <div>
-    <div class="chart-container">
-      <form
-        class="d-flex justify-content-end align-items-center"
-        [formGroup]="chartForm"
-      >
-        <!-- شروع تاریخ -->
-        <app-jalali-datetime-picker
-          [control]="endDateControl"
-          [placeholder]="'End Date'"
-          (dateTimeSelected)="onDateSelected('end_time', $event)"
-          [dateOnly]="true"
-          [format]="'jYYYY/jMM/jDD'"
-          class="me-3"
-        ></app-jalali-datetime-picker>
-
-        <app-jalali-datetime-picker
-          [control]="startDateControl"
-          [placeholder]="'Start Date'"
-          [dateOnly]="true"
-          [format]="'jYYYY/jMM/jDD'"
-          (dateTimeSelected)="onDateSelected('start_date', $event)"
-          class="me-3"
-        >
-        </app-jalali-datetime-picker>
-
-        <div class="input-group" style="width: 250px">
-          <select
-            class="form-select form-select-sm input-group select-rtl"
-            aria-label="small select example"
-            formControlName="queue_name"
-            dir="rtl"
-          >
-            <option value="all">همه</option>
-            <option value="queue-1">پشتیبانی</option>
-          </select>
-          <span class="input-group-text">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-list-ul"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
-              />
-            </svg>
-          </span>
-        </div>
-      </form>
+      <h4 class="mb-0 text-blue" text-blue>گزارشات آماری</h4>
+      <app-date-time></app-date-time>
     </div>
+    <div class="d-flex justify-content-between align-items-center">
+      <div>
+        <div class="me-3" dir="ltr">
+          <form
+            class="d-flex justify-content-end align-items-center"
+            [formGroup]="chartForm"
+          >
+            <!-- شروع تاریخ -->
+            <app-jalali-datetime-picker
+              [control]="endDateControl"
+              [placeholder]="'End Date'"
+              (dateTimeSelected)="onDateSelected('end_time', $event)"
+              [dateOnly]="true"
+              [format]="'jYYYY/jMM/jDD'"
+              class="me-3"
+            ></app-jalali-datetime-picker>
+
+            <app-jalali-datetime-picker
+              [control]="startDateControl"
+              [placeholder]="'Start Date'"
+              [dateOnly]="true"
+              [format]="'jYYYY/jMM/jDD'"
+              (dateTimeSelected)="onDateSelected('start_date', $event)"
+              class="me-3"
+            >
+            </app-jalali-datetime-picker>
+
+            <div class="input-group" style="width: 250px">
+              <select
+                class="form-select form-select-sm input-group select-rtl"
+                aria-label="small select example"
+                formControlName="queue_name"
+                dir="rtl"
+              >
+                <option value="all">همه</option>
+                <option value="queue-1">پشتیبانی</option>
+              </select>
+              <span class="input-group-text">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-list-ul"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                  />
+                </svg>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="btn-group ms-3 my-4" role="group" aria-label="Basic example" dir="ltr">
+        <button
+          type="button"
+          class="btn"
+          [ngClass]="{
+            'btn-primary': activePeriod === 'daily',
+            'btn-secondary': activePeriod !== 'daily'
+          }"
+          (click)="setPeriod('daily')"
+        >
+          روزانه
+        </button>
+        <button
+          type="button"
+          class="btn"
+          [ngClass]="{
+            'btn-primary': activePeriod === 'weekly',
+            'btn-secondary': activePeriod !== 'weekly'
+          }"
+          (click)="setPeriod('weekly')"
+        >
+          هفتگی
+        </button>
+        <button
+          type="button"
+          class="btn"
+          [ngClass]="{
+            'btn-primary': activePeriod === 'monthly',
+            'btn-secondary': activePeriod !== 'monthly'
+          }"
+          (click)="setPeriod('monthly')"
+        >
+          ماهانه
+        </button>
+        <button
+          type="button"
+          class="btn"
+          [ngClass]="{
+            'btn-primary': activePeriod === 'quarterly',
+            'btn-secondary': activePeriod !== 'quarterly'
+          }"
+          (click)="setPeriod('quarterly')"
+        >
+          فصلی
+        </button>
+      </div>
+    </div>
+    
   </div>
+  <app-create-chart [chartData]="data"></app-create-chart>
 </div>
-<app-create-chart [chartData]="data"></app-create-chart>

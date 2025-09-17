@@ -1,11 +1,10 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
 import { WallboardComponent } from './pages/wallboard/wallboard.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LayoutsComponent } from './layouts/layouts.component';
-import { CustomersComponent } from './pages/customers/customers.component';
+import { AgentReportComponent } from './pages/agentReport/agentReport.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { ChartsComponent } from './pages/charts/charts.component';
 import { guestGuard } from './guards/guest-guard.guard';
@@ -26,9 +25,8 @@ export const routes: Routes = [
       { path: 'charts', component: ChartsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'products', component: ProductsComponent },
-      { path: 'customers', component: CustomersComponent },
-      { path: 'home', component: HomeComponent },
+      { path: 'agent-queue-report', component: AgentReportComponent },
     ],
   },
-  { path: '**', redirectTo: '/home' },
+  { path: '**', redirectTo: '/wallboard' },
 ];

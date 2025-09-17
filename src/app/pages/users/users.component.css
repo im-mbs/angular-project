@@ -1,9 +1,14 @@
 th{
-    padding: 0 80px 5px 10px;
+    padding: 0 10px 5px 80px;
 }
 
 td {
   vertical-align: middle; /* متن در وسط عمودی قرار می‌گیرد */
+}
+
+.body{
+    width: calc(100% - 40px);
+    margin: 20px auto;
 }
 
 .user-form{

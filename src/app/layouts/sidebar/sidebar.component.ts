@@ -10,10 +10,4 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
-  constructor(private router:Router){}
-
-  logOut():void{
-    localStorage.removeItem('auth_token')
-    this.router.navigate(['/login'])
-  }
 }

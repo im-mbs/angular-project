@@ -47,7 +47,7 @@ onSubmitted() {
       if (token) {
         console.log('✅ Login successful, token:', token);
         localStorage.setItem('auth_token', token);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/wallboard']);
       } else {
         this.error = '❌ ورود نامعتبر. توکن دریافت نشد.';
         console.error('No token received in response:', res);
