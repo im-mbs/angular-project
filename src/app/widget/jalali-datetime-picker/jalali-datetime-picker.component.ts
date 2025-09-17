@@ -196,7 +196,7 @@ export class JalaliDatetimePickerComponent implements OnInit {
       .minute(this.dateOnly ? 0 : this.selectedMinute)
       .second(this.dateOnly ? 0 : this.selectedSecond);
     this.control.setValue(finalDate.format(this.format));
-    this.dateTimeSelected.emit(finalDate.format('YYYY-MM-DD HH:mm:ss'));
+    this.dateTimeSelected.emit(finalDate.format('YYYY-MM-DD'));
   }
 
   confirmAndClose(): void {

@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { WallboardComponent } from './pages/wallboard/wallboard.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LayoutsComponent } from './layouts/layouts.component';
 import { CustomersComponent } from './pages/customers/customers.component';
@@ -22,7 +22,7 @@ export const routes: Routes = [
     canActivate: [authGuard],
     component: LayoutsComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'wallboard', component: WallboardComponent },
       { path: 'charts', component: ChartsComponent },
       { path: 'users', component: UsersComponent },
       { path: 'products', component: ProductsComponent },

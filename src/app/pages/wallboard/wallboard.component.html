@@ -1,0 +1,74 @@
+<div class="report mx-4">
+  <div class="form-box bg-light border rounded">
+    <div
+      class="p-3 text-left d-flex justify-content-between align-items-center w-100"
+    >
+      <app-date-time></app-date-time>
+      <h4 class="mb-0 text-blue" text-blue>گزارشات لحظه ای</h4>
+    </div>
+    <div class="row m-4">
+      <form class="row justify-content-end align-items-center" [formGroup]="wallboardform">
+        <div class="col-3 d-flex flex-column">
+          <label for="queue-select" class="form-label">صف</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm select-rtl"
+              aria-label="small select example"
+              formControlName="queue_name"
+              id="queue-select"
+              dir="rtl"
+            >
+              <option value="all">همه</option>
+              <option value="queue-1">پشتیبانی فنی</option>
+            </select>
+            <span class="input-group-text">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-list-ul"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+
+        <div class="col-3 d-flex flex-column">
+          <label for="agent-select" class="form-label">کاربر</label>
+          <div class="input-group">
+            <select
+              class="form-select form-select-sm select-rtl"
+              aria-label="small select example"
+              formControlName="agent"
+              id="agent-select"
+              dir="rtl"
+            >
+              <option value="all">همه</option>
+            </select>
+            <span class="input-group-text">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-list-ul"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5m-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2m0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2"
+                />
+              </svg>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

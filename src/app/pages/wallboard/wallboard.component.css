@@ -1,0 +1,16 @@
+.report{
+    width: 1500px;
+    margin-top: 20px;
+}
+
+.select-rtl {
+  background-position: left 0.75rem center; /* جابجا کردن فلش */
+  padding-left: 2rem; /* فاصله برای فلش */
+  padding-right: 0.75rem; /* اصلاح فاصله راست */
+}
+
+.form-label {
+  text-align: right;
+  display: block; /* اطمینان از اینکه block باشد و بتواند چپ و راست شود */
+  margin-bottom: 0.2rem;
+}

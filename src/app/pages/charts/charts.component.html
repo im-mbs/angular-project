@@ -44,10 +44,10 @@
       type="button"
       class="btn"
       [ngClass]="{
-        'btn-primary': activePeriod === 'seasonly',
-        'btn-secondary': activePeriod !== 'seasonly'
+        'btn-primary': activePeriod === 'quarterly',
+        'btn-secondary': activePeriod !== 'quarterly'
       }"
-      (click)="setPeriod('seasonly')"
+      (click)="setPeriod('quarterly')"
     >
       فصلی
     </button>
@@ -61,20 +61,24 @@
       >
         <!-- شروع تاریخ -->
         <app-jalali-datetime-picker
-          [control]="startDateControl"
-          [placeholder]="'Start Date'"
-          (dateTimeSelected)="onDateSelected('start_date', $event)"
-          [dateOnly]="true"
-          class="me-3"
-        ></app-jalali-datetime-picker>
-
-        <app-jalali-datetime-picker
           [control]="endDateControl"
           [placeholder]="'End Date'"
           (dateTimeSelected)="onDateSelected('end_time', $event)"
           [dateOnly]="true"
+          [format]="'jYYYY/jMM/jDD'"
           class="me-3"
         ></app-jalali-datetime-picker>
+
+        <app-jalali-datetime-picker
+          [control]="startDateControl"
+          [placeholder]="'Start Date'"
+          [dateOnly]="true"
+          [format]="'jYYYY/jMM/jDD'"
+          (dateTimeSelected)="onDateSelected('start_date', $event)"
+          class="me-3"
+        >
+        </app-jalali-datetime-picker>
+
         <div class="input-group" style="width: 250px">
           <select
             class="form-select form-select-sm input-group select-rtl"
@@ -105,7 +109,4 @@
     </div>
   </div>
 </div>
-
-<div class="dispaly-chart m-5">
-  <canvas id="barChart"></canvas>
-</div>
+<app-create-chart [chartData]="data"></app-create-chart>
