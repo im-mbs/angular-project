@@ -2,6 +2,7 @@ import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
+  HttpParams,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ValueChangeEvent } from '@angular/forms';
@@ -49,6 +50,19 @@ export class RequestHTTPService {
       .get<any>(url, { headers: this.getAuthHeaders() })
       .pipe(catchError(this.handleError));
   }
+
+  getRequestWithParams(path: string, paramsObj: { [key: string]: any }): Observable<any> {
+  const url = `${this.baseUrl}/${path}`;
+  let params = new HttpParams();
+  for (const key in paramsObj) {
+    if (paramsObj.hasOwnProperty(key)) {
+      params = params.set(key, paramsObj[key]);
+    }
+  }
+  return this.http
+    .get<any>(url, { headers: this.getAuthHeaders(), params })
+    .pipe(catchError(this.handleError));
+}
 
   postRequest(path: string, onSubmitted: any): Observable<any> {
     const url = `${this.baseUrl}/${path}`;

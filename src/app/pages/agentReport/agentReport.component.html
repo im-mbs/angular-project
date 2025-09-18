@@ -38,18 +38,39 @@
       </div>
     </div>
 
-    <div class="d-flex  align-items-center">
+    <div class="d-flex align-items-center">
       <div class="me-3" dir="ltr">
         <form
           class="d-flex justify-content-end align-items-center"
           [formGroup]="agentForm"
         >
-          <!-- شروع تاریخ -->
-          <app-jalali-datetime-picker id="startDate"></app-jalali-datetime-picker>
+          <div class="mx-4">
+            <label class="form-label" for="end_date">تاریخ پایان</label>
+            <app-jalali-datetime-picker
+              id="end_date"
+              [control]="endDateControl"
+              [placeholder]="'تاریخ پایان'"
+              [format]="'jYYYY/jMM/jDD HH:mm:ss'"
+              (dateTimeSelected)="onDateSelected('start_date', $event)"
+              class="me-3"
+            >
+            </app-jalali-datetime-picker>
+          </div>
 
-          <app-jalali-datetime-picker id="endDate" ></app-jalali-datetime-picker>
+          <div class="mx-4">
+            <label class="form-label" for="start_date">تاریخ شروع</label>
+            <app-jalali-datetime-picker
+              id="start_date"
+              [control]="startDateControl"
+              [placeholder]="'تاریخ شروع'"
+              [format]="'jYYYY/jMM/jDD HH:mm:ss'"
+              (dateTimeSelected)="onDateSelected('start_date', $event)"
+              class="me-3"
+            >
+            </app-jalali-datetime-picker>
+          </div>
 
-          <div class="d-flex flex-column">
+          <div class="mb-4 mx-4">
             <label for="agent-select" class="form-label">اوپراتور</label>
             <div class="input-group" style="width: 250px">
               <select
@@ -68,4 +89,5 @@
       </div>
     </div>
   </div>
+  <app-generic-grid [data]="data" [columns]="columns" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 25, 50]" [loading]="loading"></app-generic-grid>
 </div>
